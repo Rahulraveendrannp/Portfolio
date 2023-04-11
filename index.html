@@ -14,6 +14,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <link rel="stylesheet" href="@sweetalert2/theme-borderless/borderless.css">
+
+        <script src="sweetalert2/dist/sweetalert2.min.js"></script>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
 
 </head>
 
@@ -67,17 +73,16 @@
             <div class="about-content">
                 <center>
                     <div class="column left imageleft">
-                        <!-- <img id="sumedhimg" src="images/sumedh.png" alt=""> -->
-                        <!-- <img id="sumedhimg" src="images/second_pic.jpeg" alt=""> -->
-                        <img id="sumedhimg" src="/" alt="">
+                      
+                        <img id="rahulimg" src="/" alt="">
 
 
                     </div>
                     <div class="column right">
                         <div class="text">I'm Rahul N P and I'm a <span class="typing-2" style="color:violet">
                                 Full stack Developer</span></div>
-                        <p>A passionate MERN Stack Developer, Dedicated to developing robust applications that
-                            interact with the Backend  Frontend part of web applications. Extensive expertise in website
+                        <p>A passionate MERN Stack Developer, Dedicated to developing robust websites that
+                            interact with the Backend  part of web applications. Extensive expertise in website
                             architecture, design, and web design, and web API designs. Problem-solving mindset with a
                             goal to optimize my application for better stability and speed. Love to work in a team.</p>
                         <!-- <a href="#">Download CV</a> -->
@@ -455,7 +460,7 @@
                     <center>
                         <div class="text">Message me</div>
                     </center>
-                    <form target="_blank" action="https://script.google.com/macros/s/AKfycbzzp2IdwKetbOa3pYgG1eb_H4x710_5UZhhRwLfXMHFEckHm9RENk7gE6mZrw9ktE2p/exec" method="POST">
+                    <form  id="submit-form" action=""  onsubmit="sendMail(event)" >
                         <div class="fields">
                             <div class="field name">
                                 <input style="background-color: transparent " type="text" name="name" placeholder="Name"
@@ -467,12 +472,12 @@
                             </div>
                         </div>
                         <div class="field">
-                            <input style="background-color: transparent " type="text" name="subject" id="sub"
+                            <input style="background-color: transparent " type="text" name="subject" id="subject"
                                 placeholder="subject" required>
                         </div>
                         <div class="field textarea">
                             <textarea style="background-color: transparent " cols="30" rows="10" id="text"
-                                name="message" placeholder="Message.." required></textarea>
+                                name="message" placeholder="Message.."  required></textarea>
                         </div>
 
                         <div class="button-area">
@@ -526,6 +531,7 @@
         <span class="far fa-copyright"></span> @Created by Rahul</span>
     </footer>
 
+    
     <script src="script.js"></script>
 </body>
 
