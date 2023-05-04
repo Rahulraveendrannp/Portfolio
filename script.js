@@ -71,11 +71,77 @@ $(document).ready(function () {
       },
     });
   });
+
+
+ 
+
+
+  function validate (e) {
+   
+   
+
+    const username =document.getElementById('name').value;
+    const  email  =document.getElementById('email').value;
+    const subject =document.getElementById('subject').value;
+    const msgtext =document.getElementById('text').value;
+    const mobile =document.getElementById('mobile').value;
+    var collab = document.getElementById("collab");
+    var gender = document.getElementsByName("gender");
+   const errormsg=document.getElementById('errormsg');
+  var emailregex=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/ ;
+   var nameregex=/^[A-Za-z ]+$/ ;
+  
+   errormsg.innerHTML=' ';
+
+ if(!nameregex.test(username)){
+   e.preventDefault();
+   errormsg.innerHTML='Enter a valid Name';
+    return;
+ }
+  if(!emailregex.test(email)){
+   e.preventDefault();
+   errormsg.innerHTML='Enter a valid Email';
+    return;}
+   if(mobile.trim().length!=10){
+    e.preventDefault();
+    errormsg.innerHTML='Enter a valid Mobile Number';
+     return;}
+ if(subject.trim() === '' || subject === null){
+   e.preventDefault();
+   errormsg.innerHTML='Subjet Required';
+    return;
+ }
+ if(msgtext.trim() === '' || msgtext === null){
+  e.preventDefault();
+  errormsg.innerHTML='Message field Reqired';
+   return;
+ }
+ if (collab.value == 0) {
+  e.preventDefault(); 
+  errormsg.innerHTML = "Kindly select the reason for your enquiry ";
+   return ;
+}
+ 
+   
+ if (!(gender[0].checked || gender[1].checked||gender[2].checked)) {
+  e.preventDefault();
+  errormsg.innerHTML='KIndly select yor Gender';
+   return;
+}
+
+    
+ 
+}
+
+
+
+
   
   $("#submit-form").submit((e)=>{
+   
       e.preventDefault()
       $.ajax({
-          url:"https://script.google.com/macros/s/AKfycbzzp2IdwKetbOa3pYgG1eb_H4x710_5UZhhRwLfXMHFEckHm9RENk7gE6mZrw9ktE2p/exec",
+          url:"https://script.google.com/macros/s/AKfycbwi4iKue3sAEPuHkcCQqZOEt7-pX2b89_O7XxSTK-uxCaqHe5HOdgKrUFtIn708Z5BdRQ/exec",
           data:$("#submit-form").serialize(),
           method:"post",
           success:function (response){
@@ -88,11 +154,7 @@ $(document).ready(function () {
               cancelButtonColor: '#d33',
               confirmButtonText: 'OK'
             }).then((result) => {
-              if (result.isConfirmed) {
-                Swal.fire(
-                  window.location.reload()
-                )
-              }
+              window.location.reload()
             })
               
               
@@ -104,24 +166,5 @@ $(document).ready(function () {
       })
   })
 
-  const form = document.getElementById('submit-form'),
-        name =document.getElementById('name'),
-        email  =document.getElementById('email'),
-        subject =document.getElementById('subject'),
-        message =document.getElementById('text')
+ 
 
-function sendMail(e){
-  e.preventDefault();
-       
-        Email.send({
-          Host : "smtp.elasticemail.com",
-          Username : "rahulraveendrannp@gmail.com",
-          Password : "C3759256C03A638D6DE87494456640D89045",
-          To : 'rahulraveendrannp@gmail.com',
-          From : 'rahulraveendrannp1996@gmail.com',
-          Subject : subject.value,
-          Body : message.value
-      }).then(
-        message => console.log(message)
-      );
-    }

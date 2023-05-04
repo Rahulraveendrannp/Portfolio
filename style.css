@@ -1653,9 +1653,15 @@ text.ContributionCalendar-label {
 }
 
 
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 
 
-
-
+input[type=radio]{
+  accent-color: rgb(5, 75, 34);
+}
 
 /* home page text */

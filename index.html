@@ -13,14 +13,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+         href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <link rel="stylesheet" href="@sweetalert2/theme-borderless/borderless.css">
-
-        <script src="sweetalert2/dist/sweetalert2.min.js"></script>
-        <script src="https://smtpjs.com/v3/smtp.js"></script>
-
+        
+        
+        
+       
 </head>
 
 <body>
@@ -460,29 +459,54 @@
                     <center>
                         <div class="text">Message me</div>
                     </center>
-                    <form  id="submit-form" action=""  onsubmit="sendMail(event)" >
+                    
+                    <form  id="submit-form" action=""  >
                         <div class="fields">
                             <div class="field name">
-                                <input style="background-color: transparent " type="text" name="name" placeholder="Name"
-                                    id="name" required>
+                                <input style="background-color: transparent " type="text" name="username" placeholder="Name"
+                                    id="name" >
                             </div>
                             <div class="field email">
                                 <input style="background-color: transparent " type="email" id="email" name="email"
-                                    placeholder="Email" required>
+                                    placeholder="Email" >
                             </div>
                         </div>
                         <div class="field">
-                            <input style="background-color: transparent " type="text" name="subject" id="subject"
-                                placeholder="subject" required>
+                            <input style="background-color: transparent " type="" name="mobile" id="mobile"
+                                placeholder="Phone Number" >
                         </div>
+                        <select id="collab" name="collaboration"  style="margin-right: 200px;background-color: rgb(15, 15, 15) ;color: rgb(182, 185, 189);border-radius: 5px; height: 30px;" >
+                            <option value=0 name="collaboration" >Select</option>
+                            <option value="job_vacancy" name="collaboration" >Job Vacancy</option>
+                            <option value="freelance" name="collaboration" >Freelance</option>
+                            <option value="open-source" name="collaboration"  >Contribute to open source</option>
+                            <option value="others" name="collaboration" >Others</option>
+                          </select>
+                        
+                            <input type="radio" name="gender" id="male" value="male"  > 
+                            <label for="male" style="margin-right: 10px;color: rgb(219, 213, 213);">Male</label>
+                            
+                            <input type="radio" name="gender" id="female" value="Female"> 
+                            <label for="female" style="margin-right: 10px;color: rgb(184, 176, 176);">Female</label>
+
+                            <input type="radio" name="gender" id="female" value="Prefer not to Disclose"> 
+                            <label for="female" style="color: rgb(184, 176, 176);">Prefer not to Disclose</label>
+                        
+
+                        <div class="field" style="margin-top: 10px;">
+                            <input style="background-color: transparent " type="text" name="subject" id="subject"
+                                placeholder="subject" >
+                        </div>
+                        
                         <div class="field textarea">
                             <textarea style="background-color: transparent " cols="30" rows="10" id="text"
-                                name="message" placeholder="Message.."  required></textarea>
+                                name="message" placeholder="Message.."  ></textarea>
                         </div>
-
+                        <p style="text-align: center;margin-top: 5px; font-weight: bold;text-align: center; margin-bottom: 15px;color: rgb(139, 13, 13);" id="errormsg" ></p>
                         <div class="button-area">
+                            
 
-                            <button style="width: 200px;" class="button-85" type="submit" role="button" id="submit">Send
+                            <button onclick="validate(event)"  style="width: 200px;"  class="button-85" type="submit" role="button" id="submitbtn">Send
                                 message</button>
                         </div>
                     </form>
@@ -537,7 +561,7 @@
 
 </html>
 
-<script src="index.js"></script>
+
 <script src="https://unpkg.com/github-calendar@latest/dist/github-calendar.min.js"></script>
 <script>
     GitHubCalendar(".calendar", "rahulraveendrannp", { responsive: true });
