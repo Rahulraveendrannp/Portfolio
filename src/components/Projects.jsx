@@ -157,7 +157,6 @@ export default function Projects() {
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-cyan-400 font-mono text-sm font-medium mb-3">{'// projects'}</p>
           <h2 className="text-4xl md:text-5xl font-bold text-white">What I've Built</h2>
           <p className="text-slate-400 mt-4 max-w-lg mx-auto text-sm">
             Enterprise-scale applications built with modern technologies and best practices

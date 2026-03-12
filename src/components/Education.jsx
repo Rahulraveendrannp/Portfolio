@@ -5,7 +5,6 @@ export default function Education() {
     <section id="education" className="py-20 bg-[#0a0a1a]">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-12">
-          <p className="text-cyan-400 font-mono text-sm font-medium mb-3">{'// education'}</p>
           <h2 className="text-3xl md:text-4xl font-bold text-white">Education</h2>
         </div>
 

@@ -3,7 +3,6 @@ export default function GitHubStats() {
     <section className="py-16 bg-[#050510]">
       <div className="max-w-6xl mx-auto px-6">
         <div className="text-center mb-10">
-          <p className="text-cyan-400 font-mono text-sm font-medium mb-3">{'// github_activity'}</p>
           <h2 className="text-3xl md:text-4xl font-bold text-white">GitHub Stats</h2>
         </div>
 

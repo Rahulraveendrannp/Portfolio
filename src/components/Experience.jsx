@@ -84,7 +84,6 @@ export default function Experience() {
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-cyan-400 font-mono text-sm font-medium mb-3">{'// work_experience'}</p>
           <h2 className="text-4xl md:text-5xl font-bold text-white">Where I've Worked</h2>
           <p className="text-slate-500 mt-3 text-sm">3+ years of professional experience</p>
         </div>

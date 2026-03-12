@@ -1,13 +1,5 @@
-import { FiMapPin, FiMail, FiPhone, FiGithub, FiLinkedin, FiCalendar, FiUser } from 'react-icons/fi'
+import { FiGithub, FiLinkedin } from 'react-icons/fi'
 import { useEffect, useRef } from 'react'
-
-const personalDetails = [
-  { icon: FiUser,    label: 'Gender',    value: 'Male' },
-  { icon: FiCalendar, label: 'DOB',      value: '18 May 1996 (Age 29)' },
-  { icon: FiMapPin,  label: 'Location',  value: 'Calicut, Kerala, India' },
-  { icon: FiMail,    label: 'Email',     value: 'Rahulraveendrannp@gmail.com', href: 'mailto:Rahulraveendrannp@gmail.com' },
-  { icon: FiPhone,   label: 'Phone',     value: '+91 7907996240',              href: 'tel:+917907996240' },
-]
 
 const softSkills  = ['Problem Solving', 'Team Player', 'Quick Learner', 'Leadership', 'Flexible', 'Optimistic']
 const languages   = ['English', 'Hindi', 'Tamil', 'Malayalam']
@@ -29,12 +21,11 @@ export default function About() {
       <div className="max-w-6xl mx-auto px-6">
         {/* Section header */}
         <div className="text-center mb-16">
-          <p className="text-cyan-400 font-mono text-sm font-medium mb-3">{'// about_me'}</p>
           <h2 className="text-4xl md:text-5xl font-bold text-white">Who Am I?</h2>
         </div>
 
         <div ref={ref} className="reveal grid lg:grid-cols-2 gap-14 items-start">
-          {/* Left column */}
+          {/* Left column — avatar & social only (contact details are in Contact section) */}
           <div className="space-y-7">
             {/* Avatar */}
             <div className="relative inline-block">
@@ -46,34 +37,7 @@ export default function About() {
               </div>
             </div>
 
-            {/* Personal details */}
-            <div className="space-y-2.5">
-              {personalDetails.map(({ icon: Icon, label, value, href }) => (
-                <div
-                  key={label}
-                  className="flex items-center gap-3 p-3 bg-[#0d0d20] border border-indigo-500/10 hover:border-indigo-500/20 rounded-xl transition-colors"
-                >
-                  <div className="w-8 h-8 bg-indigo-500/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon size={14} className="text-indigo-400" />
-                  </div>
-                  <div className="min-w-0">
-                    <div className="text-xs text-slate-500 font-medium">{label}</div>
-                    {href ? (
-                      <a
-                        href={href}
-                        className="text-sm text-slate-300 hover:text-cyan-400 transition-colors truncate block"
-                      >
-                        {value}
-                      </a>
-                    ) : (
-                      <div className="text-sm text-slate-300">{value}</div>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            {/* Social buttons */}
+            {/* Social links */}
             <div className="flex flex-wrap gap-2">
               <a
                 href="https://github.com/Rahulraveendrannp"
@@ -92,14 +56,17 @@ export default function About() {
                 <FiLinkedin size={15} /> LinkedIn
               </a>
               <a
-                href="https://rahulnp.online"
+                href="https://rahulraveendrannp.shop/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-4 py-2 bg-[#0d0d20] border border-slate-700/50 hover:border-purple-400/40 rounded-xl text-slate-400 hover:text-purple-400 transition-all text-sm font-medium"
               >
-                🌐 rahulnp.online
+                🌐 rahulraveendrannp.shop
               </a>
             </div>
+            <p className="text-slate-500 text-sm">
+              For email, phone & location, see the <a href="#contact" className="text-cyan-400 hover:underline">Contact</a> section below.
+            </p>
           </div>
 
           {/* Right column — bio */}
@@ -166,6 +133,9 @@ export default function About() {
                 ))}
               </div>
             </div>
+
+            {/* DOB only (no age) */}
+            <p className="text-slate-500 text-sm">Born 18 May 1996</p>
           </div>
         </div>
       </div>

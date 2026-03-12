@@ -10,10 +10,14 @@ const links = [
   { name: 'Contact',    href: '#contact' },
 ]
 
-export default function Navbar() {
-  const [scrolled, setScrolled]   = useState(false)
-  const [menuOpen, setMenuOpen]   = useState(false)
-  const [activeId, setActiveId]   = useState('home')
+// Add your profile photo as public/profile.jpg to show before your name
+const PROFILE_IMAGE = '/profile.jpg'
+
+export default function Navbar({ onResumeClick }) {
+  const [scrolled, setScrolled]     = useState(false)
+  const [menuOpen, setMenuOpen]     = useState(false)
+  const [activeId, setActiveId]    = useState('home')
+  const [profileImgError, setProfileImgError] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -46,11 +50,20 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
+        {/* Logo — profile image or initial */}
         <a href="#home" className="group flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-indigo-500/30">
-            R
-          </div>
+          {!profileImgError ? (
+            <img
+              src={PROFILE_IMAGE}
+              alt="Rahul N P"
+              className="w-8 h-8 rounded-lg object-cover border border-indigo-500/20 shadow-lg"
+              onError={() => setProfileImgError(true)}
+            />
+          ) : (
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center text-white font-bold text-sm shadow-lg shadow-indigo-500/30">
+              R
+            </div>
+          )}
           <span className="font-mono font-bold text-white text-sm group-hover:text-cyan-400 transition-colors">
             rahul<span className="text-indigo-400">.np</span>
           </span>
@@ -76,12 +89,13 @@ export default function Navbar() {
             )
           })}
           <li>
-            <a
-              href="#"
+            <button
+              type="button"
+              onClick={() => onResumeClick?.()}
               className="ml-3 px-5 py-2 text-sm font-semibold bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg transition-all duration-200 shadow-lg shadow-indigo-500/20"
             >
               Resume
-            </a>
+            </button>
           </li>
         </ul>
 
@@ -112,12 +126,13 @@ export default function Navbar() {
               {name}
             </a>
           ))}
-          <a
-            href="#"
-            className="block mt-4 text-center py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-semibold text-sm transition-colors"
+          <button
+            type="button"
+            onClick={() => { onResumeClick?.(); setMenuOpen(false) }}
+            className="w-full mt-4 py-3 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-semibold text-sm transition-colors"
           >
             Resume
-          </a>
+          </button>
         </div>
       </div>
     </nav>

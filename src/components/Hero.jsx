@@ -119,7 +119,7 @@ export default function Hero() {
                 <span className="text-sm font-medium">Email</span>
               </a>
               <a
-                href="https://rahulnp.online"
+                href="https://rahulraveendrannp.shop/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 text-slate-500 hover:text-purple-400 transition-all duration-200 group"
