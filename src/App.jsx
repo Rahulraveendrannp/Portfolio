@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -10,12 +11,13 @@ import GitHubStats from './components/GitHubStats'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import ResumeModal from './components/ResumeModal'
+import AnishaCMenon from './pages/AnishaCMenon'
 
-function App() {
+function MainPortfolio() {
   const [resumeModalOpen, setResumeModalOpen] = useState(false)
 
   return (
-    <div className="bg-[#050510] text-white">
+    <>
       <ResumeModal isOpen={resumeModalOpen} onClose={() => setResumeModalOpen(false)} />
       <Navbar onResumeClick={() => setResumeModalOpen(true)} />
       <Hero />
@@ -27,7 +29,20 @@ function App() {
       <GitHubStats />
       <Contact />
       <Footer />
-    </div>
+    </>
+  )
+}
+
+function App() {
+  return (
+    <Router>
+      <div className="bg-[#050510] text-white min-h-screen">
+        <Routes>
+          <Route path="/" element={<MainPortfolio />} />
+          <Route path="/anishacmenon" element={<AnishaCMenon />} />
+        </Routes>
+      </div>
+    </Router>
   )
 }
 
