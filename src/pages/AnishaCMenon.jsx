@@ -168,17 +168,17 @@ export default function AnishaCMenon() {
 
   "You're ridiculously good\nat planning. 📅",
 
-  "You cook  well. 🍳😂\n (bonus)",
+  "You cook  well. 🍳\n (bonus)",
 
   "Sometimes\nyou drive me crazy. 🤦‍♂️",
 
   "But considering\neverything else you bring\ninto my life... ❤️",
 
-  "I'd say\nit's a pretty good deal. 😂",
+  "I'd say\nit's a pretty good deal. ",
 
   "That's all...\nfor now. 😌",
 
-  "The remaining compliments\nwill be unlocked\nin future updates. 🔒😂",
+  "The remaining compliments\nwill be unlocked\nin future updates. 🔒",
 
   "Thank you\nfor being with me. ❤️"
 ];
