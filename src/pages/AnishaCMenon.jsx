@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Music, VolumeX, Heart } from 'lucide-react';
+import { Music, VolumeX, Heart, Lock } from 'lucide-react';
 
 const FadeInSection = ({ children, delay = 0 }) => {
   const [isVisible, setVisible] = useState(false);
@@ -93,10 +93,25 @@ const Confetti = () => {
 };
 
 export default function AnishaCMenon() {
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isMusicPlaying, setIsMusicPlaying] = useState(false);
   const [showConfetti, setShowConfetti] = useState(false);
   const audioRef = useRef(null);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    if (password === '31081999') {
+      setIsAuthenticated(true);
+      setError(false);
+    } else {
+      setError(true);
+      setPassword('');
+    }
+  };
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -117,6 +132,13 @@ export default function AnishaCMenon() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (isAuthenticated && audioRef.current) {
+      audioRef.current.play().catch(e => console.log("Audio auto-play failed:", e));
+      setIsMusicPlaying(true);
+    }
+  }, [isAuthenticated]);
+
   const toggleMusic = () => {
     setIsMusicPlaying(!isMusicPlaying);
     // Placeholder for actual audio logic
@@ -129,12 +151,9 @@ export default function AnishaCMenon() {
     }
   };
 
-  // Interpolate background color based on scroll progress
-  // From a soft pink to a deeper romantic sunset gradient
+  // Keep background consistently light pink
   const bgStyle = {
-    background: `linear-gradient(to bottom, 
-      rgba(253, 224, 235, ${1 - scrollProgress * 0.5}), 
-      rgba(244, 196, 243, ${0.5 + scrollProgress * 0.5}))`,
+    backgroundColor: 'rgba(253, 224, 235, 1)',
   };
 
   const messages = [
@@ -149,7 +168,7 @@ export default function AnishaCMenon() {
 
   "You're ridiculously good\nat planning. 📅",
 
-  "You cook really well. 🍳😂",
+  "You cook  well. 🍳😂\n (bonus)",
 
   "Sometimes\nyou drive me crazy. 🤦‍♂️",
 
@@ -163,6 +182,39 @@ export default function AnishaCMenon() {
 
   "Thank you\nfor being with me. ❤️"
 ];
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-pink-50 flex flex-col items-center justify-center p-6 text-center font-sans">
+        <div className="bg-white p-8 md:p-12 rounded-3xl shadow-xl max-w-sm w-full border border-pink-100 transform transition-all">
+          <div className="w-16 h-16 bg-pink-100 text-pink-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+            <Lock size={32} />
+          </div>
+          <h2 className="text-2xl font-serif text-gray-800 mb-2">Private Page</h2>
+          <p className="text-gray-500 mb-8 text-sm">Please enter the date of birth to continue</p>
+          
+          <form onSubmit={handleLogin} className="space-y-4">
+            <div>
+              <input
+                type="password"
+                inputMode="numeric"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="DDMMYYYY"
+                className={`w-full px-5 py-4 bg-gray-50 border ${error ? 'border-red-400 focus:ring-red-400' : 'border-gray-200 focus:ring-pink-400'} rounded-xl focus:outline-none focus:ring-2 focus:border-transparent transition-all text-center tracking-widest text-lg font-medium text-gray-700`}
+              />
+              {error && <p className="text-red-400 text-xs mt-2 font-medium">Incorrect. Try again. ❤️</p>}
+            </div>
+            <button
+              type="submit"
+              className="w-full bg-pink-500 hover:bg-pink-600 text-white font-medium py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+            >
+              Unlock
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div style={bgStyle} className="min-h-screen relative text-gray-800 font-sans selection:bg-pink-300">
@@ -181,9 +233,9 @@ export default function AnishaCMenon() {
         `}
       </style>
 
-      {/* Hidden audio element (You can add src later) */}
+      {/* Hidden audio element */}
       <audio ref={audioRef} loop>
-          {/* <source src="/soft-romantic-music.mp3" type="audio/mpeg" /> */}
+          <source src="/romantic.mp3" type="audio/mpeg" />
       </audio>
 
       <FloatingHearts />
